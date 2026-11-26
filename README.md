@@ -45,6 +45,15 @@ Cloudflare Pages: `public/_redirects` sends all routes to `index.html`. Set the 
 - PayPal and GCash QRPh are listed as **not enabled**. "Place order" is disabled.
 - **Tested:** the redirect for signed-out visitors. **Not tested:** the form itself, because it sits behind login, which is not connected yet.
 
+## Admin area (built, locked until connected)
+- Routes under `/admin`: Overview, Products, Inventory, Orders, Customers, Payments, Digital, Bookings, Content, Reports, Activity log, Administrators, Settings.
+- Sidebar with collapse, and a light/dark theme toggle that remembers your choice.
+- Role model in `src/admin/permissions.ts`: Owner, Manager, Product Editor, Order Manager, Support Staff, and granular permission keys from spec section 17.
+- **The guard fails closed.** Without Supabase, the admin area shows "not connected." Even when signed in, access is denied until a role lookup from the database exists. That lookup is not built yet.
+- **This check is not the security boundary.** Real protection must come from Row Level Security and server functions.
+- Each section is a placeholder that shows no numbers. The Overview shows "—," not invented figures.
+- **Tested:** `/admin` shows the locked gate, and the admin layout is not mixed with the storefront nav. **Not tested:** the admin pages themselves, because they are behind the locked gate.
+
 ## Not done yet
 - Server-side order creation and price checks, database tables and Row Level Security, the customer dashboard content (orders, downloads, services), the admin dashboard, payments (PayPal, GCash QRPh), and transactional email (sections 5–27 of the spec).
 
