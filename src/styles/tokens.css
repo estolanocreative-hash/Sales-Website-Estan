@@ -1,0 +1,8 @@
+/* Brand palette tokens, taken exactly from the project spec (section 3). */
+:root {
+  --color-chalk: #F4F3EF;        /* primary light background */
+  --color-stone: #D8D7D1;        /* secondary surfaces, borders */
+  --color-graphite: #45494A;     /* body text, secondary contrast */
+  --color-signal-orange: #FF653B; /* highlights, buttons, accents */
+  --color-near-black: #191B1C;   /* headings, dark sections */
+}
