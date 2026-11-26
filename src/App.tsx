@@ -5,6 +5,7 @@ import { CartProvider } from './cart/CartContext'
 import { AuthProvider } from './auth/AuthContext'
 import { StorefrontPage } from './pages/StorefrontPage'
 import { AccountPage } from './pages/AccountPage'
+import { CheckoutPage } from './pages/CheckoutPage'
 import { ForgotPasswordPage, LoginPage, RegisterPage, ResetPasswordPage } from './pages/AuthPages'
 import './App.css'
 import './components/cart.css'
@@ -26,6 +27,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="*" element={<StorefrontPage />} />
           </Routes>
           <CartDrawer />

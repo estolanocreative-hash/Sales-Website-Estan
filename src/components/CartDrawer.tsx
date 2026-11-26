@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
 import { useCart } from '../cart/CartContext'
 
@@ -103,11 +104,17 @@ export function CartDrawer() {
           <button type="button" className="btn btn--ghost" onClick={close}>
             Continue shopping
           </button>
-          <button type="button" className="btn btn--primary" disabled={items.length === 0}>
-            Proceed to checkout
-          </button>
+          {items.length > 0 ? (
+            <Link to="/checkout" className="btn btn--primary" onClick={close}>
+              Proceed to checkout
+            </Link>
+          ) : (
+            <button type="button" className="btn btn--primary" disabled>
+              Proceed to checkout
+            </button>
+          )}
           <p className="drawer__note">
-            Checkout is not available yet. Customer accounts and payments are still being set up.
+            Payments are not turned on yet. Checkout shows your details but does not place orders.
           </p>
         </footer>
       </aside>

@@ -38,8 +38,15 @@ Status: **Phase 1 in progress.** Scaffold is in place, `npm run build` passes, a
 
 Cloudflare Pages: `public/_redirects` sends all routes to `index.html`. Set the environment variables in the Pages project settings, not in the repo.
 
+## Checkout (built, partly tested)
+- `/checkout` requires a signed-in customer. Signed-out visitors are sent to `/login`.
+- Shows the cart summary, a shipping form for physical items, a service-request note, and a digital-delivery note.
+- Validates the shipping form before continuing. Nothing is saved, charged, or placed as an order.
+- PayPal and GCash QRPh are listed as **not enabled**. "Place order" is disabled.
+- **Tested:** the redirect for signed-out visitors. **Not tested:** the form itself, because it sits behind login, which is not connected yet.
+
 ## Not done yet
-- Checkout, customer dashboard content (orders, downloads, services), admin dashboard, database tables and Row Level Security, server-side price checks, payments (PayPal, GCash QRPh), and transactional email (sections 5–27 of the spec).
+- Server-side order creation and price checks, database tables and Row Level Security, the customer dashboard content (orders, downloads, services), the admin dashboard, payments (PayPal, GCash QRPh), and transactional email (sections 5–27 of the spec).
 
 ## Information still needed (spec sections 3, 25)
 - Tagline and business description for Cognex.
