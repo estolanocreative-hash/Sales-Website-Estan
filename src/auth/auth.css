@@ -1,0 +1,144 @@
+/* Auth pages and account placeholder. */
+
+.auth {
+  min-height: calc(100svh - 70px);
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+}
+.auth__card {
+  width: min(440px, 100%);
+  background: #fff;
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: grid;
+  gap: 16px;
+}
+.auth__back {
+  font-size: 14px;
+  color: var(--color-graphite);
+  text-decoration: none;
+  justify-self: start;
+}
+.auth__back:hover {
+  color: var(--color-signal-orange);
+}
+.auth__title {
+  font-size: clamp(30px, 5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.auth__lede {
+  color: var(--color-graphite);
+}
+.auth__form {
+  display: grid;
+  gap: 16px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field span {
+  font-weight: 600;
+  color: var(--color-near-black);
+  font-size: 14px;
+}
+.field small {
+  font-size: 12px;
+  color: var(--color-graphite);
+}
+.field input {
+  padding: 12px 14px;
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius);
+  background: var(--color-chalk);
+  color: var(--color-near-black);
+}
+.field input:focus {
+  border-color: var(--color-signal-orange);
+  outline: none;
+}
+.auth__notice {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 15px;
+}
+.auth__notice--error {
+  background: #fdecea;
+  color: #8a1c10;
+  border: 1px solid #f5c2bb;
+}
+.auth__notice--info {
+  background: var(--color-stone);
+  color: var(--color-near-black);
+}
+.auth__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-graphite);
+  font-size: 13px;
+}
+.auth__divider::before,
+.auth__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-stone);
+}
+.auth__google {
+  width: 100%;
+  justify-content: center;
+}
+.auth__links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+}
+.auth__links a {
+  color: var(--color-near-black);
+}
+
+/* ---------- Account placeholder ---------- */
+.account {
+  padding: 64px 20px 96px;
+}
+.account__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+.account__title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+}
+.account__email {
+  color: var(--color-graphite);
+}
+.account__grid {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.account__tile {
+  background: #fff;
+  border: 1px solid var(--color-stone);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.account__tile h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.account__tile p {
+  color: var(--color-graphite);
+  font-size: 14px;
+}

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Menu, ShoppingBag, User, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext'
+import { useAuth } from '../auth/AuthContext'
 
 const links = [
   { href: '#shop', label: 'Shop' },
@@ -13,6 +15,7 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false)
   const { count, open: openCart } = useCart()
+  const { user } = useAuth()
   const cartCount = count
 
   return (
@@ -45,14 +48,13 @@ export function Nav() {
             <ShoppingBag size={20} aria-hidden="true" />
             {cartCount > 0 && <span className="icon-btn__count">{cartCount}</span>}
           </button>
-          <button
-            type="button"
+          <Link
+            to={user ? '/account' : '/login'}
             className="icon-btn"
-            aria-label="Account (sign-in not yet available)"
-            disabled
+            aria-label={user ? 'My account' : 'Log in'}
           >
             <User size={20} aria-hidden="true" />
-          </button>
+          </Link>
           <button
             type="button"
             className="icon-btn nav__toggle"
