@@ -54,6 +54,20 @@ Cloudflare Pages: `public/_redirects` sends all routes to `index.html`. Set the 
 - Each section is a placeholder that shows no numbers. The Overview shows "—," not invented figures.
 - **Tested:** `/admin` shows the locked gate, and the admin layout is not mixed with the storefront nav. **Not tested:** the admin pages themselves, because they are behind the locked gate.
 
+## Database schema (written, NOT applied)
+- File: `supabase/migrations/0001_init.sql`. Covers profiles, addresses, admins, roles, permissions, invitations, activity logs, catalog, variants and stock, digital files, orders, payments, webhook events, download grants, bookings, notifications, site content, and business settings.
+- Money is stored as integer centavos.
+- Row Level Security is on for every table. Customers see only their own rows. Admins are limited by permission. Activity logs have no update or delete policy.
+- The owner record is protected by a database trigger. It cannot be deleted, demoted, or suspended.
+- Admins can only set orders to fulfilled or cancelled. Only the server can mark an order paid, after the provider confirms it.
+- **Not tested.** It has not been run on a real database. Expect fixes after the first run.
+
+### To apply it
+1. In the Supabase dashboard, open **SQL Editor**, paste the whole file, and run it on a **test** project first.
+2. Check the errors, if any, and send them back so they can be fixed.
+3. Only after it works on the test project, run it on the real project.
+4. Then create the first owner: sign up with the owner email, then insert that user into `admin_members` with `role = 'owner'`, `is_owner = true`, `status = 'active'`. This is a one-time manual step.
+
 ## Not done yet
 - Server-side order creation and price checks, database tables and Row Level Security, the customer dashboard content (orders, downloads, services), the admin dashboard, payments (PayPal, GCash QRPh), and transactional email (sections 5–27 of the spec).
 
