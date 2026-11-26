@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Search, X } from 'lucide-react'
 import { products, type Category, type Product } from '../data/products'
+import { useCart } from '../cart/CartContext'
 import { Section } from './Section'
 
 type Tab = 'all' | Category
@@ -27,6 +28,7 @@ function matches(product: Product, query: string) {
 export function Shop() {
   const [tab, setTab] = useState<Tab>('all')
   const [query, setQuery] = useState('')
+  const { add } = useCart()
 
   const visible = useMemo(
     () =>
@@ -98,6 +100,9 @@ export function Shop() {
               <h3 className="card__title">{p.name}</h3>
               <p className="card__desc">{p.description}</p>
               <p className="card__price">₱{p.price.toLocaleString('en-PH')}</p>
+              <button type="button" className="btn btn--outline" onClick={() => add(p.id)}>
+                Add to cart
+              </button>
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Menu, ShoppingBag, User, X } from 'lucide-react'
+import { useCart } from '../cart/CartContext'
 
 const links = [
   { href: '#shop', label: 'Shop' },
@@ -9,13 +10,10 @@ const links = [
   { href: '#contact', label: 'Contact' },
 ]
 
-interface NavProps {
-  /** Number of items in the cart. Cart logic is added in a later phase. */
-  cartCount?: number
-}
-
-export function Nav({ cartCount = 0 }: NavProps) {
+export function Nav() {
   const [open, setOpen] = useState(false)
+  const { count, open: openCart } = useCart()
+  const cartCount = count
 
   return (
     <header className="nav">
@@ -41,7 +39,8 @@ export function Nav({ cartCount = 0 }: NavProps) {
           <button
             type="button"
             className="icon-btn"
-            aria-label={`Cart, ${cartCount} item${cartCount === 1 ? '' : 's'}`}
+            aria-label={`Open cart, ${cartCount} item${cartCount === 1 ? '' : 's'}`}
+            onClick={openCart}
           >
             <ShoppingBag size={20} aria-hidden="true" />
             {cartCount > 0 && <span className="icon-btn__count">{cartCount}</span>}

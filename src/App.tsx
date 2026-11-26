@@ -3,9 +3,21 @@ import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { Shop } from './components/Shop'
 import { Section, PendingContent } from './components/Section'
+import { CartDrawer } from './components/CartDrawer'
+import { CartProvider } from './cart/CartContext'
 import './App.css'
+import './components/cart.css'
 
 function App() {
+  return (
+    <CartProvider>
+      <Storefront />
+      <CartDrawer />
+    </CartProvider>
+  )
+}
+
+function Storefront() {
   // Scroll-triggered reveals. Elements with .reveal fade in once they enter the viewport.
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>('.reveal')
@@ -33,7 +45,7 @@ function App() {
       <a href="#shop" className="skip-link">
         Skip to shop
       </a>
-      <Nav cartCount={0} />
+      <Nav />
       <main>
         <Hero />
 
